@@ -400,4 +400,58 @@ document.getElementById("musicFile").onchange=e=>{
 };
 function playMusic(){
  if(!audio.src){document.getElementById("musicStatus").textContent="Choose an audio file first.";return}
- audio.play().the
+ 
+ audio.play().then(() => {
+  document.getElementById("musicStatus").textContent = "Music playing.";
+ }).catch(() => {
+  document.getElementById("musicStatus").textContent = "Could not play this audio file.";
+ });
+}
+
+function pauseMusic() {
+ audio.pause();
+ document.getElementById("musicStatus").textContent = "Music paused.";
+}
+
+function toggleMute() {
+ audio.muted = !audio.muted;
+ document.getElementById("muteBtn").textContent = audio.muted ? "🔊 Unmute" : "🔇 Mute";
+}
+
+let visibleMs = 0;
+let lastVisible = Date.now();
+let breakShown = false;
+
+function updateVisibleTime() {
+ const now = Date.now();
+ if (!document.hidden) visibleMs += now - lastVisible;
+ lastVisible = now;
+}
+
+document.addEventListener("visibilitychange", updateVisibleTime);
+
+function checkBreak() {
+ updateVisibleTime();
+ if (visibleMs >= 7200000 && !breakShown) {
+  breakShown = true;
+  document.getElementById("breakNotice").classList.remove("hidden");
+ }
+}
+
+function dismissBreak() {
+ document.getElementById("breakNotice").classList.add("hidden");
+}
+
+function remindLater() {
+ document.getElementById("breakNotice").classList.add("hidden");
+ visibleMs = 0;
+ breakShown = false;
+}
+
+setInterval(checkBreak, 30000);
+
+renderGames();
+updateProfile();
+</script>
+</body>
+</html>
