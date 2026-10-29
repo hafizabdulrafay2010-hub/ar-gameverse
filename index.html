@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AR GAMEVERSE | Play. Explore. Conquer.</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background: #0b0718;
+    }
+    header {
+      padding: 22px 16px;
+      text-align: center;
+      background: #170d32;
+      border-bottom: 2px solid #923cff;
+    }
+    header h1 {
+      margin: 0;
+      color: #c89aff;
+      font-size: 29px;
+    }
+    header p { color: #d8c9ee; }
+    .hero {
+      text-align: center;
+      padding: 42px 18px;
+      background: linear-gradient(140deg, #25104a, #090714);
+    }
+    .hero h2 { font-size: 32px; margin-bottom: 12px; }
+    .hero p { color: #d3c9e5; line-height: 1.6; }
+    .search {
+      width: 100%;
+      max-width: 420px;
+      padding: 13px;
+      margin-top: 16px;
+      border: 1px solid #8d52d9;
+      border-radius: 10px;
+      background: #171027;
+      color: white;
+      font-size: 16px;
+    }
+    main { padding: 24px 16px; max-width: 1000px; margin: auto; }
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 14px;
+    }
+    .game {
+      padding: 20px 12px;
+      background: #19132a;
+      border: 1px solid #392655;
+      border-radius: 14px;
+      text-align: center;
+    }
+    .game .emoji { font-size: 38px; }
+    .game h3 { margin: 12px 0 8px; }
+    .game p { color: #c9bddb; font-size: 13px; }
+    button {
+      padding: 10px 14px;
+      color: white;
+      background: #792fe0;
+      border: 0;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover { background: #984fff; }
+    #message { color: #d7b9ff; text-align: center; }
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #b9a8d0;
+      border-top: 1px solid #392655;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎮 AR GAMEVERSE</h1>
+    <p>PLAY. EXPLORE. CONQUER.</p>
+  </header>
+
+  <section class="hero">
+    <h2>Your Gaming Universe</h2>
+    <p>Play, learn, solve puzzles, and discover your next adventure!</p>
+    <input id="search" class="search" placeholder="🔎 Search games..." oninput="searchGames()">
+  </section>
+
+  <main>
+    <h2>🔥 Explore Our Games</h2>
+    <div class="games" id="games">
+      <article class="game" data-name="number challenge educational math">
+        <div class="emoji">🧠</div>
+        <h3>Number Challenge</h3>
+        <p>Test your maths skills!</p>
+        <button onclick="startMath()">Play Now</button>
+      </article>
+      <article class="game" data-name="memory puzzle brain">
+        <div class="emoji">🧩</div>
+        <h3>Memory Challenge</h3>
+        <p>Train your memory.</p>
+        <button onclick="startMemory()">Play Now</button>
+      </article>
+      <article class="game" data-name="reaction speed arcade">
+        <div class="emoji">⚡</div>
+        <h3>Reaction Test</h3>
+        <p>Test your speed.</p>
+        <button onclick="startReaction()">Play Now</button>
+      </article>
+      <article class="game" data-name="learning educational quiz">
+        <div class="emoji">📚</div>
+        <h3>Learning Zone</h3>
+        <p>Learn while you play.</p>
+        <button onclick="showLearning()">Explore</button>
+      </article>
+    </div>
+    <p id="message">Choose a game to begin your adventure!</p>
+  </main>
+
+  <footer>
+    <p>© 2026 AR GAMEVERSE</p>
+    <p>Made for players, learners, and explorers.</p>
+  </footer>
+
+  <script>
+    function searchGames() {
+      const query = document.getElementById('search').value.toLowerCase();
+      document.querySelectorAll('.game').forEach(game => {
+        game.style.display = game.dataset.name.includes(query) ||
+          game.innerText.toLowerCase().includes(query) ? '' : 'none';
+      });
+    }
+
+    function startMath() {
+      const answer = prompt('What is 7 × 8?');
+      if (answer === null) return;
+      document.getElementById('message').textContent =
+        Number(answer) === 56 ? '🎉 Correct! You earned 10 points!' :
+        'Not quite! The answer is 56. Try again!';
+    }
+
+    function startMemory() {
+      const sequence = ['🍎', '🚀', '⭐'];
+      alert('Remember these symbols: ' + sequence.join(' '));
+      const answer = prompt('Which symbol was in the middle? (🍎, 🚀, or ⭐)');
+      document.getElementById('message').textContent =
+        answer === '🚀' ? '🎉 Excellent memory! You won!' :
+        'Good try! The middle symbol was 🚀.';
+    }
+
+    function startReaction() {
+      const start = Date.now();
+      alert('Get ready! Press OK, then your reaction time will be measured.');
+      const elapsed = Date.now() - start;
+      document.getElementById('message').textContent =
+        'Your reaction time: ' + elapsed + ' ms. Try to beat your score!';
+    }
+
+    function showLearning() {
+      document.getElementById('message').textContent =
+        '📚 Learning Zone: Maths, Science, English, and brain-training games are planned!';
+    }
+  </script>
+</body>
+  </html>
+  
