@@ -4,469 +4,212 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#10091f">
-<title>AR GAMEVERSE | Play. Explore. Conquer.</title>
+<title>AR GAMEVERSE</title>
 <style>
-:root{--bg:#0b0715;--panel:#19122b;--accent:#a855f7;--glow:#d8b4fe;--muted:#c7bad9}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:white;font-family:Arial,sans-serif}
-body.red{--bg:#170809;--panel:#2a1114;--accent:#ef4444;--glow:#fca5a5;--muted:#f3c5c5}
-body.blue{--bg:#07111e;--panel:#10243a;--accent:#38bdf8;--glow:#bae6fd;--muted:#c5e6fa}
-body.green{--bg:#07140e;--panel:#10281c;--accent:#22c55e;--glow:#86efac;--muted:#c5f7d5}
-button,input,select{font:inherit}
-button{background:var(--accent);color:white;border:0;padding:11px 14px;border-radius:9px;cursor:pointer;font-weight:bold;margin:3px}
-button:hover{filter:brightness(1.15)}
-button:disabled{opacity:.55}
-input,select{background:var(--bg);color:white;border:1px solid var(--accent);border-radius:9px;padding:12px;max-width:100%}
-header{text-align:center;padding:18px 12px;background:var(--panel);border-bottom:2px solid var(--accent)}
-header h1{margin:0;color:var(--glow);font-size:clamp(25px,6vw,36px);text-shadow:0 0 18px var(--accent)}
-header p{letter-spacing:3px;color:var(--muted);font-size:12px}
-nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:10px}
-.hero{text-align:center;padding:35px 16px;background:radial-gradient(ellipse at top,var(--panel),var(--bg) 75%)}
-.hero h2{font-size:clamp(28px,6vw,42px);margin:10px}
-.hero p{color:var(--muted);line-height:1.6}
-.search{width:min(100%,500px);margin-top:12px}
-main{max-width:1050px;margin:auto;padding:20px 14px}
-h2.section{color:var(--glow);margin-top:26px}
-.panel{background:var(--panel);border:1px solid var(--accent);border-radius:14px;padding:17px;margin:14px 0}
-.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
-.row input{flex:1;min-width:130px}
-.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:13px}
-.game{background:var(--panel);border:1px solid #ffffff22;border-radius:14px;padding:17px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
-.game .emoji{font-size:40px}
-.game h3{margin:2px}
-.game p{color:var(--muted);font-size:13px;line-height:1.5;flex:1}
-.tag{font-size:11px;color:var(--glow);text-transform:uppercase;letter-spacing:1px}
-#playArea{text-align:center}
-#playArea h2{color:var(--glow)}
-.answers{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin:15px 0}
-.big-symbol{font-size:40px;letter-spacing:4px}
-.hidden{display:none!important}
-.muted{color:var(--muted);font-size:13px;line-height:1.6}
-.stat{background:var(--bg);padding:12px;border-radius:10px;flex:1;min-width:90px}
-.stat strong{display:block;font-size:22px;color:var(--glow)}
-footer{text-align:center;color:var(--muted);padding:25px;border-top:1px solid #ffffff22}
-#intro{position:fixed;inset:0;z-index:10;background:#090511;display:flex;align-items:center;justify-content:center;text-align:center;animation:fadeAway .8s ease 2.3s forwards}
-#intro h1{font-size:clamp(30px,8vw,55px);color:#d8b4fe;text-shadow:0 0 30px #a855f7;animation:pulse 1.2s infinite alternate}
-#intro p{letter-spacing:4px}
-@keyframes pulse{to{transform:scale(1.06);text-shadow:0 0 45px #a855f7}}
-@keyframes fadeAway{to{opacity:0;visibility:hidden;pointer-events:none}}
-#breakNotice{position:fixed;inset:0;background:#000c;z-index:20;display:flex;align-items:center;justify-content:center;padding:18px}
-#breakCard{width:min(100%,420px);background:#12251b;border:2px solid #4ade80;border-radius:18px;padding:24px;text-align:center}
-#breakCard h2{color:#86efac}
- 
- #playArea {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  overflow-y: auto;
-  margin: 0;
-  border-radius: 0;
-  width: 100%;
-  min-height: 100vh;
-  box-sizing: border-box;
-  background: var(--bg);
-  padding: 24px 16px 40px;
-  text-align: center;
- }
+body{margin:0;background:#090b16;color:#f5f5ff;font-family:Arial,sans-serif}
+header{padding:24px 16px;background:linear-gradient(135deg,#211044,#101b3d);text-align:center}
+h1{color:#bd8cff;letter-spacing:2px}
+main{max-width:900px;margin:auto;padding:18px}
+.stats,.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
+.card,.stat{padding:17px;border:1px solid #303454;border-radius:16px;background:#15192b}
+.stat{text-align:center}
+button{border:0;border-radius:10px;padding:12px;background:#a56bff;color:white;font-weight:bold;cursor:pointer}
+.card button{width:100%}
+#game{margin-top:20px;padding:20px;border-radius:18px;background:#171b30;text-align:center}
+#question{font-size:26px;margin:20px 0}
+input{width:100%;padding:13px;border-radius:9px;border:1px solid #555;background:#090b16;color:white;margin-bottom:10px}
+.hidden{display:none}
+footer{text-align:center;color:#999;padding:24px}
 </style>
 </head>
 <body>
-
-<div id="intro">
- <div>
-  <div style="font-size:60px">🐺</div>
-  <h1>AR GAMEVERSE</h1>
-  <p>PLAY. EXPLORE. CONQUER.</p>
-  <p style="font-size:12px">YOUR GAMING UNIVERSE</p>
- </div>
+<header>
+<h1>⚔️ AR GAMEVERSE</h1>
+<p>Your world. Your games. Your victory.</p>
+</header>
+<main>
+<div class="stats">
+<div class="stat">⭐ XP <h2 id="xp">0</h2></div>
+<div class="stat">🏆 Level <h2 id="level">1</h2></div>
+<div class="stat">🎮 Games <h2>4</h2></div>
 </div>
 
-<header>
- <h1>🐺 AR GAMEVERSE</h1>
- <p>PLAY. EXPLORE. CONQUER.</p>
-</header>
+<h2>🎯 Choose Your Game</h2>
+<div class="games">
+<div class="card">
+<h3>🧠 Number Challenge</h3>
+<p>Test your maths skills.</p>
+<button onclick="startMath()">Play Now</button>
+</div>
+<div class="card">
+<h3>🧩 Memory Challenge</h3>
+<p>Remember the numbers.</p>
+<button onclick="startMemory()">Play Now</button>
+</div>
+<div class="card">
+<h3>⚡ Reaction Test</h3>
+<p>Test your speed.</p>
+<button onclick="startReaction()">Play Now</button>
+</div>
+<div class="card">
+<h3>📚 Learning Zone</h3>
+<p>Maths, science and English.</p>
+<button onclick="startQuiz()">Play Now</button>
+</div>
+<div class="card"><h3>🏎️ Racing Zone</h3><p>Coming soon!</p></div>
+<div class="card"><h3>⚔️ Action Zone</h3><p>Coming soon!</p></div>
+<div class="card"><h3>🧩 Puzzle Zone</h3><p>Coming soon!</p></div>
+</div>
 
-<nav>
- <button onclick="goHome()">🏠 Home</button>
- <button onclick="showProfile()">👤 Player</button>
- <button onclick="scrollToId('musicBox')">🎵 Music</button>
- <button onclick="scrollToId('themes')">🎨 Themes</button>
- <button onclick="scrollToId('account')">🔐 Sign In</button>
-</nav>
-
-<section class="hero" id="home">
- <p class="tag">WELCOME TO YOUR UNIVERSE</p>
- <h2>Level Up Your Game. 🚀</h2>
- <p>Play games, test your skills, earn XP, and explore new challenges.</p>
- <input id="search" class="search" placeholder="🔎 Search games..." oninput="renderGames()">
-</section>
-
-<main>
-<section class="panel" id="profile">
- <h2>👤 Player Profile</h2>
- <div class="row">
-  <input id="nickname" maxlength="20" placeholder="Enter your player nickname">
-  <button onclick="saveProfile()">Save Nickname</button>
- </div>
- <div class="row" style="margin-top:12px">
-  <div class="stat"><strong id="xp">0</strong>XP</div>
-  <div class="stat"><strong id="level">1</strong>Level</div>
-  <div class="stat"><strong id="played">0</strong>Games played</div>
- </div>
- <p class="muted">Progress is stored in this browser on this device.</p>
- <h3>🏅 Achievements</h3>
- <p id="achievements">Play your first game to unlock achievements!</p>
-</section>
-
-<section class="panel" id="themes">
- <h2>🎨 Choose Your Gaming Theme</h2>
- <div class="row">
-  <button onclick="setTheme('purple')">💜 Purple Neon</button>
-  <button onclick="setTheme('red')">🔴 Red Esports</button>
-  <button onclick="setTheme('blue')">🔵 Blue Cyber</button>
-  <button onclick="setTheme('green')">🟢 Green Matrix</button>
- </div>
-</section>
-
-<section class="panel" id="musicBox">
- <h2>🎵 Gaming Music</h2>
- <p class="muted">Choose an audio file on your device. Use music you have permission to play.</p>
- <input type="file" id="musicFile" accept="audio/*">
- <div class="row" style="margin-top:12px">
-  <button onclick="playMusic()">▶ Play</button>
-  <button onclick="pauseMusic()">⏸ Pause</button>
-  <button onclick="toggleMute()" id="muteBtn">🔇 Mute</button>
-  <label>Volume <input id="volume" type="range" min="0" max="1" step=".05" value=".5"></label>
- </div>
- <p id="musicStatus" class="muted">No music selected.</p>
- <audio id="audio" loop></audio>
- <p class="muted">Music begins after the user presses Play. No track is included automatically.</p>
-</section>
-
-<section>
- <h2 class="section">🔥 Explore Game Categories</h2>
- <div class="row">
-  <button onclick="setCategory('All')">🌌 All</button>
-  <button onclick="setCategory('Arcade')">🕹️ Arcade</button>
-  <button onclick="setCategory('Puzzle')">🧩 Puzzle</button>
-  <button onclick="setCategory('Education')">📚 Education</button>
-  <button onclick="setCategory('Action')">⚔️ Action</button>
-  <button onclick="setCategory('Racing')">🏎️ Racing</button>
- </div>
- <div class="games" id="games" style="margin-top:15px"></div>
- <p id="noGames" class="muted hidden">No games found. Try another search or category.</p>
-</section>
-
-<section class="panel hidden" id="playArea">
- <h2 id="gameTitle">Game</h2>
- <p id="instructions" class="muted"></p>
- <div id="gameContent"></div>
- <p id="message" aria-live="polite"></p>
- <button onclick="closeGame()">↩ Back to Games</button>
-</section>
-
-<section class="panel" id="account">
- <h2>🔐 Sign In</h2>
- <p>Choose a provider. Real sign-in must be connected before accounts can be created.</p>
- <div class="row">
-  <button onclick="authInfo('Google')">Continue with Google</button>
-  <button onclick="authInfo('Microsoft')">Continue with Microsoft</button>
- </div>
- <p id="authMessage" class="muted">Authentication is not connected yet. Local games work without an account.</p>
-</section>
-
-<section class="panel">
- <h2>🏆 Local High Scores</h2>
- <p class="muted">Best scores recorded on this device.</p>
- <div id="leaderboard">Play a game to record a score!</div>
- <p class="muted">This is not an online, shared leaderboard.</p>
+<section id="game" class="hidden">
+<h2 id="gameTitle">Game</h2>
+<p id="message">Ready?</p>
+<div id="question"></div>
+<div id="controls"></div>
+<button onclick="closeGame()">← Back to Games</button>
 </section>
 </main>
-
-<footer>
- <h3>🐺 AR GAMEVERSE</h3>
- <p>Play. Explore. Conquer.</p>
- <p>Made for players, learners, and explorers.</p>
- <p>© 2026 AR GAMEVERSE</p>
-</footer>
-
-<div id="breakNotice" class="hidden" role="dialog" aria-modal="true" aria-labelledby="breakTitle">
- <div id="breakCard">
-  <div style="font-size:48px">💚 🧃</div>
-  <h2 id="breakTitle">Gaming Break Time!</h2>
-  <p>You've spent a long time on AR GAMEVERSE. Your well-being matters more than any game.</p>
-  <p>👀 Rest your eyes.</p>
-  <p>🧍 Stand up and stretch.</p>
-  <p>💧 Have some water.</p>
-  <p>🌿 Take a little time away from the screen.</p>
-  <button onclick="dismissBreak()">Okay, I'll take a break</button>
-  <button onclick="remindLater()" style="background:#334155">Remind me in 15 minutes</button>
- </div>
-</div>
+<footer>AR GAMEVERSE © 2026 | Play • Learn • Level Up</footer>
 
 <script>
-const defaults=[
- {id:"math",name:"Number Challenge",emoji:"🧠",cat:"Education",desc:"Solve maths questions and earn XP."},
- {id:"memory",name:"Memory Challenge",emoji:"🧩",cat:"Puzzle",desc:"Remember symbols and test your brain."},
- {id:"reaction",name:"Reaction Test",emoji:"⚡",cat:"Arcade",desc:"React when the signal turns green."},
- {id:"learning",name:"Learning Zone",emoji:"📚",cat:"Education",desc:"Try maths, science, and English quizzes."},
- {id:"racing",name:"Racing Zone",emoji:"🏎️",cat:"Racing",desc:"Racing games are planned for a future update.",soon:true},
- {id:"action",name:"Action Zone",emoji:"⚔️",cat:"Action",desc:"More action games are planned.",soon:true},
- {id:"puzzle",name:"Puzzle Zone",emoji:"🧩",cat:"Puzzle",desc:"More original puzzles are coming soon.",soon:true}
-];
-
-let category="All";
-let best={};
-let reactionTimer=null,reactionStart=0,reactionReady=false;
-let audioURL=null;
-let activeGame=false;
-
-function getSaved(key,fallback){
- try{const v=localStorage.getItem(key);return v===null?fallback:JSON.parse(v)}
- catch(e){return fallback}
+let xp=Number(localStorage.getItem("argame_xp"))||0;
+let round=0,answer=0,mode="",timer=null,started=0;
+const $=id=>document.getElementById(id);
+function update(){
+$("xp").textContent=xp;
+$("level").textContent=Math.floor(xp/100)+1;
+localStorage.setItem("argame_xp",xp);
 }
-let player=getSaved("argv_player",{name:"Player",xp:0,played:0});
-best=getSaved("argv_best",{});
-document.getElementById("nickname").value=player.name||"Player";
-
-function escapeHTML(s){
- return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-function persist(){
- try{
-  localStorage.setItem("argv_player",JSON.stringify(player));
-  localStorage.setItem("argv_best",JSON.stringify(best));
- }catch(e){}
- updateProfile();
-}
-function saveProfile(){
- player.name=document.getElementById("nickname").value.trim()||"Player";
- document.getElementById("nickname").value=player.name;
- persist();
-}
-function updateProfile(){
- document.getElementById("xp").textContent=player.xp||0;
- document.getElementById("level").textContent=Math.floor((player.xp||0)/100)+1;
- document.getElementById("played").textContent=player.played||0;
- const a=[];
- if(player.played>=1)a.push("🎮 First Game");
- if(player.xp>=50)a.push("⭐ 50 XP");
- if(player.xp>=100)a.push("🏆 Level 2");
- if(player.played>=5)a.push("🔥 Five Games Played");
- document.getElementById("achievements").textContent=a.length?a.join(" • "):"Play your first game to unlock achievements!";
- document.getElementById("leaderboard").innerHTML=Object.keys(best).length?
- Object.entries(best).sort((a,b)=>b[1]-a[1]).map(([n,s])=>"<p>"+escapeHTML(n)+": <strong>"+s+"</strong> points</p>").join(""):"Play a game to record a score!";
-}
-function setTheme(t){
- document.body.classList.remove("red","blue","green");
- if(["red","blue","green"].includes(t))document.body.classList.add(t);
- try{localStorage.setItem("argv_theme",JSON.stringify(t))}catch(e){}
-}
-setTheme(getSaved("argv_theme","purple"));
-function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
-function goHome(){window.scrollTo({top:0,behavior:"smooth"})}
-function showProfile(){scrollToId("profile")}
-
-function setCategory(c){category=c;renderGames()}
-function renderGames(){
- const q=document.getElementById("search").value.toLowerCase();
- const list=defaults.filter(g=>(category==="All"||g.cat===category)&&
- (g.name+" "+g.cat+" "+g.desc).toLowerCase().includes(q));
- document.getElementById("games").innerHTML=list.map(g=>
- '<article class="game"><div class="emoji">'+g.emoji+'</div><span class="tag">'+g.cat+'</span><h3>'+g.name+'</h3><p>'+g.desc+'</p>'+
- '<button onclick="launch(\''+g.id+'\')">'+(g.soon?"Coming Soon":"Play Now")+'</button></article>'
- ).join("");
- document.getElementById("noGames").classList.toggle("hidden",list.length>0);
-}
-function authInfo(provider){
- document.getElementById("authMessage").textContent=provider+
- " sign-in is not connected. It needs a registered app, secure authentication configuration, and provider setup. No account was created.";
-}
-function openGame(title,ins){
- clearTimeout(reactionTimer);reactionReady=false;activeGame=true;
- document.getElementById("playArea").classList.remove("hidden");
- document.getElementById("gameTitle").textContent=title;
- document.getElementById("instructions").textContent=ins;
- document.getElementById("gameContent").innerHTML="";
- document.getElementById("message").textContent="";
- document.getElementById("playArea").scrollIntoView({behavior:"smooth"});
+function openGame(title,m){
+clearTimeout(timer);mode=m;round=0;
+$("game").classList.remove("hidden");
+$("gameTitle").textContent=title;
+$("message").textContent="Let's play!";
+$("controls").innerHTML="";
+$("question").textContent="";
+$("game").scrollIntoView({behavior:"smooth"});
 }
 function closeGame(){
- clearTimeout(reactionTimer);reactionReady=false;activeGame=false;
- document.getElementById("playArea").classList.add("hidden");
- document.getElementById("gameContent").innerHTML="";
+clearTimeout(timer);
+$("game").classList.add("hidden");
 }
-function award(points,game,score){
- player.xp=(player.xp||0)+points;
- player.played=(player.played||0)+1;
- best[game]=Math.max(best[game]||0,score||0);
- persist();
+function award(points){
+xp+=points;update();
 }
-function launch(id){
- if(id==="math")startMath();
- else if(id==="memory")startMemory();
- else if(id==="reaction")startReaction();
- else if(id==="learning")showLearning();
- else{
-  openGame("🚧 Coming Soon","This category is planned but is not playable yet.");
-  document.getElementById("gameContent").innerHTML="<p>We'll add tested games here as AR GAMEVERSE grows.</p>";
- }
-}
-
 function startMath(){
- openGame("🧠 Number Challenge","Choose an answer. Correct answers earn 10 XP.");
- let i=0,score=0;
- const qs=[
-  ["What is 7 × 8?",["54","56","64"],"56"],
-  ["What is 12 + 15?",["27","25","29"],"27"],
-  ["What is 9 × 6?",["45","56","54"],"54"],
-  ["What is 100 ÷ 4?",["20","25","40"],"25"],
-  ["What is 35 − 17?",["18","19","17"],"18"]
- ];
- function show(){
-  if(i>=qs.length){
-   document.getElementById("gameContent").innerHTML="<h3>🏆 Quiz Complete!</h3><h2>"+score+" / 50</h2><button id='again'>Play Again</button>";
-   document.getElementById("message").textContent=score>=40?"Amazing work! You're a maths champion!":"Good effort! Keep practising.";
-   award(score,"Number Challenge",score);
-   document.getElementById("again").onclick=startMath;return;
-  }
-  const q=qs[i];
-  document.getElementById("gameContent").innerHTML="<h3>Question "+(i+1)+" of "+qs.length+"</h3><h2>"+q[0]+"</h2><div class='answers'>"+q[1].map(x=>"<button data-answer='"+x+"'>"+x+"</button>").join("")+"</div><p>Score: "+score+"</p>";
-  document.querySelectorAll("[data-answer]").forEach(b=>b.onclick=()=>{
-   document.querySelectorAll("[data-answer]").forEach(x=>x.disabled=true);
-   if(b.dataset.answer===q[2]){score+=10;document.getElementById("message").textContent="✅ Correct! +10 points."}
-   else document.getElementById("message").textContent="❌ The correct answer is "+q[2]+".";
-   document.getElementById("gameContent").insertAdjacentHTML("beforeend","<button id='next'>"+(i===qs.length-1?"See Results":"Next Question →")+"</button>");
-   document.getElementById("next").onclick=()=>{i++;show()};
-  });
- }
- show();
+openGame("🧠 Number Challenge","math");mathRound();
+}
+function mathRound(){
+round++;
+if(round>10){
+$("question").textContent="🏆 Challenge complete!";
+$("message").textContent="You finished 10 questions!";
+$("controls").innerHTML='<button onclick="startMath()">Play Again</button>';
+return;
+}
+let a=Math.floor(Math.random()*20)+1;
+let b=Math.floor(Math.random()*20)+1;
+answer=a+b;
+$("message").textContent="Round "+round+" of 10";
+$("question").textContent=a+" + "+b+" = ?";
+$("controls").innerHTML='<input id="ans" type="number" placeholder="Your answer"><button onclick="checkMath()">Submit Answer</button>';
+}
+function checkMath(){
+if(Number($("ans").value)===answer){
+award(10);$("message").textContent="Correct! +10 XP 🎉";
+}else{
+$("message").textContent="Not quite! Answer: "+answer;
+}
+setTimeout(mathRound,900);
 }
 function startMemory(){
- openGame("🧩 Memory Challenge","Study the symbols, then start the test and select the middle symbol.");
- document.getElementById("gameContent").innerHTML="<div class='big-symbol'>🍎 🚀 ⭐</div><p>Remember the order!</p><button id='memStart'>Start Memory Test</button>";
- document.getElementById("memStart").onclick=()=>{
-  document.getElementById("gameContent").innerHTML="<h3>Which symbol was in the middle?</h3><div class='answers'><button data-m='🍎'>🍎</button><button data-m='🚀'>🚀</button><button data-m='⭐'>⭐</button></div>";
-  document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{
-   document.querySelectorAll("[data-m]").forEach(x=>x.disabled=true);
-   const correct=b.dataset.m==="🚀";
-   document.getElementById("message").textContent=correct?"🎉 Correct! +10 XP!":"Good try! The answer was 🚀.";
-   award(correct?10:0,"Memory Challenge",correct?10:0);
-   document.getElementById("gameContent").insertAdjacentHTML("beforeend","<button id='memAgain'>Play Again</button>");
-   document.getElementById("memAgain").onclick=startMemory;
-  });
- };
+openGame("🧩 Memory Challenge","memory");
+round=0;memoryRound();
+}
+function memoryRound(){
+round++;
+if(round>5){
+$("question").textContent="Memory master! 🏆";
+$("message").textContent="You completed 5 rounds!";
+$("controls").innerHTML='<button onclick="startMemory()">Play Again</button>';
+return;
+}
+let number=String(Math.floor(100+Math.random()*900));
+$("message").textContent="Remember this number!";
+$("question").textContent=number;
+$("controls").innerHTML="";
+timer=setTimeout(()=>{
+answer=number;
+$("question").textContent="What was the number?";
+$("message").textContent="Round "+round+" of 5";
+$("controls").innerHTML='<input id="ans" type="number" placeholder="Enter the number"><button onclick="checkMemory()">Check</button>';
+},1800+round*400);
+}
+function checkMemory(){
+if($("ans").value===answer){
+award(15);$("message").textContent="Amazing memory! +15 XP";
+}else $("message").textContent="The number was "+answer;
+setTimeout(memoryRound,1100);
 }
 function startReaction(){
- openGame("⚡ Reaction Test","Press Start. Wait for green, then tap the green button. Don't tap early!");
- document.getElementById("gameContent").innerHTML="<button id='rStart'>Start Test</button><button id='signal' class='hidden'>TAP NOW!</button>";
- const start=document.getElementById("rStart"),signal=document.getElementById("signal");
- start.onclick=()=>{
-  clearTimeout(reactionTimer);reactionReady=false;
-  start.classList.add("hidden");signal.classList.remove("hidden");
-  signal.style.background="#b91c39";signal.textContent="WAIT FOR GREEN...";
-  document.getElementById("message").textContent="Don't tap yet!";
-  reactionTimer=setTimeout(()=>{
-   reactionReady=true;reactionStart=Date.now();
-   signal.style.background="#16a34a";signal.textContent="TAP NOW!";
-  },1200+Math.random()*2500);
- };
- signal.onclick=()=>{
-  if(!reactionReady){
-   clearTimeout(reactionTimer);signal.classList.add("hidden");start.classList.remove("hidden");
-   document.getElementById("message").textContent="Too early! Try again.";return;
-  }
-  const ms=Date.now()-reactionStart;reactionReady=false;
-  signal.classList.add("hidden");start.classList.remove("hidden");
-  document.getElementById("message").textContent="Your reaction time: "+ms+" ms. "+(ms<250?"Lightning fast! ⚡":ms<400?"Great reaction!":"Keep practising!");
-  award(Math.max(1,Math.round(4000/Math.max(ms,1))),"Reaction Test",Math.max(0,1000-ms));
- };
+openGame("⚡ Reaction Test","reaction");
+$("message").textContent="Wait for GREEN, then tap!";
+$("question").textContent="🔴 WAIT...";
+$("controls").innerHTML="";
+let delay=1500+Math.random()*3500;
+timer=setTimeout(()=>{
+started=Date.now();
+$("question").textContent="🟢 TAP NOW!";
+$("controls").innerHTML='<button onclick="tapReaction()">TAP!</button>';
+},delay);
 }
-function showLearning(){
- openGame("📚 Learning Zone","Choose a subject to play a quick quiz.");
- document.getElementById("gameContent").innerHTML="<div class='answers'><button onclick='learningQuiz(\"Maths\")'>Maths</button><button onclick='learningQuiz(\"Science\")'>Science</button><button onclick='learningQuiz(\"English\")'>English</button></div>";
+function tapReaction(){
+if(!started){
+clearTimeout(timer);
+$("message").textContent="Too early! Try again.";
+$("controls").innerHTML='<button onclick="startReaction()">Try Again</button>';
+return;
 }
-function learningQuiz(subject){
- const data={
-  Maths:{q:"What is 5 × 6?",opts:["11","30","25"],ans:"30",why:"5 × 6 = 30."},
-  Science:{q:"Which planet is known as the Red Planet?",opts:["Mars","Venus","Jupiter"],ans:"Mars",why:"Mars has a rusty-red appearance."},
-  English:{q:"Which word is a noun?",opts:["Quickly","Happiness","Run"],ans:"Happiness",why:"Happiness names a feeling, so it is a noun."}
- }[subject];
- openGame("📚 "+subject,"Choose the correct answer.");
- document.getElementById("gameContent").innerHTML="<h3>"+data.q+"</h3><div class='answers'>"+data.opts.map(x=>"<button data-learn='"+x+"'>"+x+"</button>").join("")+"</div>";
- document.querySelectorAll("[data-learn]").forEach(b=>b.onclick=()=>{
-  document.querySelectorAll("[data-learn]").forEach(x=>x.disabled=true);
-  const correct=b.dataset.learn===data.ans;
-  document.getElementById("message").textContent=(correct?"✅ Correct! ":"❌ Correct answer: "+data.ans+". ")+data.why;
-  award(correct?10:0,subject+" Quiz",correct?10:0);
-  document.getElementById("gameContent").insertAdjacentHTML("beforeend","<p><button id='learnBack'>Choose Another Subject</button></p>");
-  document.getElementById("learnBack").onclick=showLearning;
- });
+let ms=Date.now()-started;started=0;
+$("question").textContent=ms+" ms";
+if(ms<350){award(20);$("message").textContent="Lightning fast! +20 XP";}
+else $("message").textContent="Good try! Aim for under 350 ms.";
+$("controls").innerHTML='<button onclick="startReaction()">Play Again</button>';
 }
-
-const audio=document.getElementById("audio");
-document.getElementById("volume").oninput=e=>audio.volume=Number(e.target.value);
-document.getElementById("musicFile").onchange=e=>{
- const file=e.target.files[0];if(!file)return;
- if(audioURL)URL.revokeObjectURL(audioURL);
- audioURL=URL.createObjectURL(file);audio.src=audioURL;
- document.getElementById("musicStatus").textContent="Selected: "+file.name;
-};
-function playMusic(){
- if(!audio.src){document.getElementById("musicStatus").textContent="Choose an audio file first.";return}
- 
- audio.play().then(() => {
-  document.getElementById("musicStatus").textContent = "Music playing.";
- }).catch(() => {
-  document.getElementById("musicStatus").textContent = "Could not play this audio file.";
- });
+const quiz=[
+{q:"Which planet is called the Red Planet?",a:["Earth","Mars","Venus"],correct:1},
+{q:"What is 8 × 7?",a:["54","56","64"],correct:1},
+{q:"Choose the correct spelling.",a:["Beautiful","Beutiful","Beautifull"],correct:0},
+{q:"What gas do plants absorb?",a:["Oxygen","Carbon dioxide","Helium"],correct:1},
+{q:"What is 100 ÷ 4?",a:["20","25","40"],correct:1}
+];
+function startQuiz(){
+openGame("📚 Learning Zone","quiz");round=0;quizRound();
 }
-
-function pauseMusic() {
- audio.pause();
- document.getElementById("musicStatus").textContent = "Music paused.";
+function quizRound(){
+if(round>=quiz.length){
+$("question").textContent="Quiz complete! 🎓";
+$("message").textContent="Great work!";
+$("controls").innerHTML='<button onclick="startQuiz()">Play Again</button>';
+return;
 }
-
-function toggleMute() {
- audio.muted = !audio.muted;
- document.getElementById("muteBtn").textContent = audio.muted ? "🔊 Unmute" : "🔇 Mute";
+let q=quiz[round];
+$("message").textContent="Question "+(round+1)+" of "+quiz.length;
+$("question").textContent=q.q;
+$("controls").innerHTML=q.a.map((a,i)=>
+'<button style="display:block;width:100%;margin:7px 0" onclick="checkQuiz('+i+')">'+a+'</button>'
+).join("");
 }
-
-let visibleMs = 0;
-let lastVisible = Date.now();
-let breakShown = false;
-
-function updateVisibleTime() {
- const now = Date.now();
- if (!document.hidden) visibleMs += now - lastVisible;
- lastVisible = now;
+function checkQuiz(i){
+if(i===quiz[round].correct){
+award(10);$("message").textContent="Correct! +10 XP";
+}else $("message").textContent="Good try! Keep learning.";
+round++;
+setTimeout(quizRound,850);
 }
-
-document.addEventListener("visibilitychange", updateVisibleTime);
-
-function checkBreak() {
- updateVisibleTime();
- if (visibleMs >= 7200000 && !breakShown) {
-  breakShown = true;
-  document.getElementById("breakNotice").classList.remove("hidden");
- }
-}
-
-function dismissBreak() {
- document.getElementById("breakNotice").classList.add("hidden");
-}
-
-function remindLater() {
- document.getElementById("breakNotice").classList.add("hidden");
- visibleMs = 0;
- breakShown = false;
-}
-
-setInterval(checkBreak, 30000);
-
-renderGames();
-updateProfile();
+update();
 </script>
 </body>
-</html>
+ </html>
+ 
