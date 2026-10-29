@@ -3,236 +3,319 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080914">
 <title>AR GAMEVERSE</title>
 <style>
-:root{--bg:#080914;--panel:#111426;--line:#292d49;--cyan:#00e5ff;--pink:#ff35c8;--purple:#a855ff;--text:#f5f6ff;--muted:#a6abc5}
+:root{--bg:#080914;--panel:#121529;--cyan:#35f2ff;--purple:#a66bff;--pink:#ff4fd8;--text:#f5f7ff;--muted:#a7aecb;--line:#303552}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#17113b 0,#080914 48%);color:var(--text);font:15px Arial,sans-serif;min-height:100vh}
-button,input,select{font:inherit}
+body{margin:0;background:radial-gradient(ellipse at top,#20163f,var(--bg) 60%);color:var(--text);font-family:Arial,sans-serif}
+button,input{font:inherit}
 button{cursor:pointer}
-header{padding:18px 5%;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;background:#080914eF;position:sticky;top:0;z-index:5}
-.logo{font-weight:900;font-size:22px;letter-spacing:1px;color:white}
-.logo span{color:var(--cyan);text-shadow:0 0 15px var(--cyan)}
-nav{display:flex;gap:8px;flex-wrap:wrap}
-button,.navbtn{border:1px solid var(--line);background:#171a30;color:white;border-radius:10px;padding:10px 13px}
-button:hover,.navbtn:hover{border-color:var(--cyan);box-shadow:0 0 12px #00e5ff35}
-.primary{background:linear-gradient(100deg,#733cff,#d52dce);border:0;font-weight:bold}
-main{max-width:1180px;margin:auto;padding:24px 16px}
-.hero{border:1px solid #463078;border-radius:22px;padding:clamp(24px,6vw,56px);background:linear-gradient(120deg,#211347,#111b36 60%,#24103a);position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;width:220px;height:220px;border:1px solid #00e5ff55;border-radius:50%;right:-65px;top:-75px;box-shadow:0 0 70px #b12bff40}
-.eyebrow{color:var(--cyan);letter-spacing:3px;font-size:12px;font-weight:bold}
-h1{font-size:clamp(35px,7vw,66px);margin:12px 0;background:linear-gradient(90deg,#fff,#6cefff,#e38bff);color:transparent;background-clip:text}
-p{line-height:1.6}
-.muted{color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
-.stat,.card,.panel{border:1px solid var(--line);border-radius:15px;background:#111426eF;padding:16px}
-.stat strong{display:block;color:var(--cyan);font-size:22px;margin-bottom:5px}
-.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:30px}
-.sectionhead h2{margin:8px 0}
-.tools{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
-input,select{min-width:0;background:#0a0d1c;border:1px solid var(--line);border-radius:10px;color:white;padding:12px}
-#search{flex:1;min-width:160px}
-.games{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.card{display:flex;flex-direction:column;gap:8px;min-width:0;transition:.2s}
-.card:hover{transform:translateY(-3px);border-color:var(--purple)}
-.art{height:110px;border-radius:11px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,#26154d,#102d43);border:1px solid #36375d}
-.card h3{margin:5px 0}
-.card p{margin:0;flex:1}
-.tag{font-size:11px;color:var(--cyan);letter-spacing:1px;text-transform:uppercase}
-.card button{margin-top:5px}
-#play{margin-top:25px;scroll-margin-top:100px}
-#play.hidden{display:none}
-#playHead{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
-#playBody{text-align:center;padding:20px 0}
-#gameTitle{font-size:26px}
-#gamePrompt{font-size:clamp(24px,5vw,40px);font-weight:bold;margin:25px 0;overflow-wrap:anywhere}
-#gameControls{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap}
-#gameControls input{max-width:230px;width:100%}
-#feedback{min-height:28px;color:var(--cyan)}
-.bigbutton{padding:18px 25px;font-size:19px;min-width:160px}
-footer{text-align:center;padding:28px 15px;color:var(--muted);border-top:1px solid var(--line);margin-top:35px}
-a{color:var(--cyan)}
-@media(max-width:700px){.games{grid-template-columns:repeat(2,minmax(0,1fr))}header{position:static}.logo{font-size:19px}.art{height:85px}}
-@media(max-width:390px){.games{grid-template-columns:1fr}.stats{gap:6px}.stat{padding:10px}.stat strong{font-size:19px}}
+button:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+header{text-align:center;padding:25px 12px;border-bottom:1px solid var(--line);background:#090a17}
+.logo{font-size:clamp(28px,7vw,44px);font-weight:900}
+.logo span{color:var(--cyan);text-shadow:0 0 18px #35f2ff66}
+.tag{color:var(--muted);font-size:12px;margin-top:8px}
+.stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:15px}
+.stat,.chip,.btn{padding:10px 13px;border:1px solid var(--line);border-radius:11px;background:#191d33;color:var(--text)}
+.stat strong{color:var(--cyan)}
+main{max-width:1000px;margin:auto;padding:20px 14px 50px}
+.hero{padding:25px 20px;border:1px solid #514478;border-radius:20px;background:linear-gradient(135deg,#241548,#11172c,#10313b)}
+.eyebrow{color:var(--cyan);font-size:12px;font-weight:bold;letter-spacing:2px}
+h1{font-size:clamp(30px,8vw,46px);margin:12px 0}
+h2{font-size:22px}
+.muted,.card p{color:var(--muted);line-height:1.5}
+.btn.primary,.chip.active{background:linear-gradient(110deg,#146b7c,#57329a);border-color:var(--cyan)}
+.btn:hover,.chip:hover{border-color:var(--cyan)}
+.search{margin:20px 0 12px}
+.search input,.gameInput{width:100%;padding:14px;border:1px solid var(--line);border-radius:11px;background:#0b0e1c;color:white}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 25px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}
+.card{display:flex;flex-direction:column;padding:17px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#171a30,#0e1121);min-height:200px}
+.emoji{font-size:34px}
+.card h3{margin:12px 0 5px}
+.card p{font-size:14px;flex:1}
+.card .btn{width:100%}
+button:disabled{opacity:.6;cursor:default}
+.section{margin-top:28px}
+.panel{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:18px}
+.external{display:block;color:var(--cyan);text-decoration:none;border:1px solid var(--line);border-radius:11px;padding:13px;margin-top:10px}
+footer{text-align:center;padding:25px 12px;color:var(--muted);font-size:12px}
+
+/* Separate fullscreen game screen */
+#gameScreen{display:none;position:fixed;inset:0;z-index:9999;width:100%;height:100%;height:100dvh;overflow-y:auto;overscroll-behavior:contain;background:radial-gradient(ellipse at top,#211644,#080914 65%);padding:env(safe-area-inset-top) 14px env(safe-area-inset-bottom)}
+#gameScreen.open{display:block}
+.gameTop{max-width:750px;margin:auto;padding:14px 0;display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line)}
+.gameContent{max-width:750px;margin:25px auto 50px}
+.gameBox{text-align:center;padding:22px 15px;border:1px solid #41486b;border-radius:19px;background:#111426}
+#gameInfo{color:var(--muted);font-size:14px}
+#gamePrompt{font-size:clamp(25px,7vw,36px);font-weight:bold;margin:26px 0}
+#gameControls{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+#feedback{min-height:28px;color:var(--cyan);margin-top:18px}
+.memoryGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%;max-width:380px;margin:auto}
+.memoryTile{aspect-ratio:1;padding:0;background:#202542;color:white;border:1px solid #454b70;border-radius:11px;font-size:clamp(22px,7vw,34px)}
+.hidden{display:none!important}
+@media(min-width:700px){main{padding-top:28px}.hero{padding:35px}}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">AR <span>GAMEVERSE</span></div>
-<nav>
-<button onclick="goHome()">Home</button>
-<button onclick="filterCategory('Original')">Original Games</button>
-<button onclick="filterCategory('Learning')">Learning</button>
-<button onclick="showProfile()">My Progress</button>
-</nav>
+  <div class="logo">AR <span>GAMEVERSE</span></div>
+  <div class="tag">YOUR PORTAL. YOUR PLAYGROUND. YOUR NEXT HIGH SCORE.</div>
+  <div class="stats">
+    <div class="stat">⭐ XP: <strong id="xp">0</strong></div>
+    <div class="stat">🏆 Best reaction: <strong id="best">—</strong></div>
+  </div>
 </header>
-<main id="home">
-<section class="hero">
-<div class="eyebrow">WELCOME TO YOUR UNIVERSE</div>
-<h1>PLAY BEYOND<br>LIMITS.</h1>
-<p class="muted">Enter a neon-powered world of challenges, puzzles, speed and discovery.</p>
-<button class="primary" onclick="document.getElementById('library').scrollIntoView({behavior:'smooth'})">Explore Games ↘</button>
-</section>
-<section class="stats">
-<div class="stat"><strong id="xp">0</strong> Total XP</div>
-<div class="stat"><strong id="level">1</strong> Player Level</div>
-<div class="stat"><strong id="played">0</strong> Games Played</div>
-</section>
-<section id="library">
-<div class="sectionhead"><h2>▣ Game Library</h2><span class="muted" id="count">Games</span></div>
-<div class="tools">
-<input id="search" placeholder="Search games..." oninput="renderGames()">
-<select id="category" onchange="renderGames()">
-<option>All</option><option>Original</option><option>Learning</option><option>Puzzle</option><option>Arcade</option><option>External</option>
-</select>
-</div>
-<div class="games" id="games"></div>
-</section>
-<section class="panel" id="play">
-<div id="playHead"><span class="tag">NOW PLAYING</span><button onclick="closeGame()">✕ Close Game</button></div>
-<div id="playBody">
-<h2 id="gameTitle">Game</h2>
-<p class="muted" id="gameInfo"></p>
-<div id="gamePrompt"></div>
-<div id="gameControls"></div>
-<p id="feedback" aria-live="polite"></p>
-</div>
-</section>
-<section class="panel" id="profile" style="margin-top:24px">
-<div class="sectionhead"><h2>✦ Player Progress</h2><button onclick="resetProgress()">Reset Progress</button></div>
-<p id="profileInfo" class="muted">Play games to earn XP and unlock higher levels.</p>
-<p class="muted">Progress is saved in this browser on this device.</p>
-</section>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">WELCOME TO THE GAMEVERSE</div>
+    <h1>Ready to <span style="color:var(--cyan)">PLAY?</span></h1>
+    <p class="muted">Challenge your brain, test your reflexes and explore your next favourite game.</p>
+    <button class="btn primary" onclick="showArcade()">Explore Games ↓</button>
+  </section>
+
+  <div class="search">
+    <input id="search" type="search" placeholder="🔎 Search games..." aria-label="Search games">
+  </div>
+  <div class="filters" id="filters"></div>
+
+  <section class="section" id="arcade">
+    <h2>🎮 Game Arcade</h2>
+    <div class="grid" id="gameGrid"></div>
+  </section>
+
+  <section class="section">
+    <h2>🧠 Learning Zone</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="emoji">🔢</div><h3>Number Challenge</h3>
+        <p>Solve maths questions and earn XP.</p>
+        <button class="btn primary" onclick="openGame('number')">Play now</button>
+      </article>
+      <article class="card">
+        <div class="emoji">🧠</div><h3>Memory Challenge</h3>
+        <p>Find matching pairs and train your memory.</p>
+        <button class="btn primary" onclick="openGame('memory')">Play now</button>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🌐 Online Games</h2>
+    <div class="panel">
+      <p class="muted">Explore games hosted by other websites.</p>
+      <a class="external" href="https://poki.com/" target="_blank" rel="noopener noreferrer">🎯 Explore Poki ↗</a>
+      <a class="external" href="https://www.crazygames.com/" target="_blank" rel="noopener noreferrer">🕹️ Explore CrazyGames ↗</a>
+    </div>
+  </section>
+
+  <section class="section panel">
+    <h2>🚀 More Zones Coming Soon</h2>
+    <p class="muted">🏎️ Racing · ⚔️ Action · 🧩 Puzzle</p>
+    <p class="muted">More original mini-games are planned for future updates.</p>
+  </section>
 </main>
-<footer>AR GAMEVERSE © 2026 · PLAY · LEARN · LEVEL UP</footer>
+<footer>AR GAMEVERSE · Made for players who love to explore.</footer>
+
+<section id="gameScreen" role="dialog" aria-modal="true" aria-labelledby="gameTitle">
+  <div class="gameTop">
+    <button class="btn" onclick="closeGame()">← Back</button>
+    <strong id="gameTitle">GAME</strong>
+    <span id="roundLabel" class="muted"></span>
+  </div>
+  <div class="gameContent">
+    <div class="gameBox">
+      <div id="gameInfo">Ready to play?</div>
+      <div id="gamePrompt">Let's go!</div>
+      <div id="gameControls"></div>
+      <div id="feedback" role="status" aria-live="polite"></div>
+      <button id="restart" class="btn primary" onclick="startGame()" style="margin-top:12px">Restart game</button>
+    </div>
+  </div>
+</section>
+
 <script>
-const gameList=[
-{id:"math",name:"Number Challenge",icon:"🧠",cat:"Original",desc:"Solve maths questions. Ten rounds per run.",theme:"Math Lab"},
-{id:"memory",name:"Memory Challenge",icon:"🧩",cat:"Puzzle",desc:"Remember a sequence that grows every round.",theme:"Mind Maze"},
-{id:"reaction",name:"Reaction Test",icon:"⚡",cat:"Arcade",desc:"Wait for the signal, then test your speed.",theme:"Neon Arena"},
-{id:"quiz",name:"Learning Zone",icon:"📚",cat:"Learning",desc:"Explore science, maths and English questions.",theme:"Knowledge Core"},
-{id:"external1",name:"Explore Poki",icon:"🌐",cat:"External",desc:"Browse a library of third-party browser games.",url:"https://poki.com/"},
-{id:"external2",name:"Explore CrazyGames",icon:"🕹️",cat:"External",desc:"Discover more games hosted by another platform.",url:"https://www.crazygames.com/"},
-{id:"racing",name:"Racing Zone",icon:"🏎️",cat:"Original",desc:"A future original racing game.",soon:true},
-{id:"action",name:"Action Zone",icon:"⚔️",cat:"Original",desc:"A future action game.",soon:true},
-{id:"puzzle",name:"Puzzle Zone",icon:"🔮",cat:"Original",desc:"More original puzzle games are planned.",soon:true}
-];
-let saved={};
-try{saved=JSON.parse(localStorage.getItem("argameverse-save")||"{}")||{}}catch(e){saved={}}
-let xp=Math.max(0,Number(saved.xp)||0),played=Math.max(0,Number(saved.played)||0);
-let mode="",round=0,answer=null,sequence=[],shown=false,started=0,waitTimer=null,locked=false;
+"use strict";
 const $=id=>document.getElementById(id);
-function persist(){try{localStorage.setItem("argameverse-save",JSON.stringify({xp,played}))}catch(e){}}
-function refreshStats(){
-$("xp").textContent=xp;$("level").textContent=Math.floor(xp/100)+1;$("played").textContent=played;
-$("profileInfo").textContent="Level "+(Math.floor(xp/100)+1)+" · "+xp%100+"/100 XP toward the next level · "+played+" game sessions completed.";
+const categories=["All","Brain","Reflex","Arcade","Puzzle","Action","Racing"];
+let activeCategory="All",currentGame="",xp=load("argameverse-xp",0),best=load("argameverse-best",0);
+let timer=null,targetNumber=0,reactionState="idle",reactionStarted=0;
+let memoryDeck=[],flipped=[],matched=[],lockBoard=false;
+
+function load(key,fallback){
+  try{const n=Number(localStorage.getItem(key));return Number.isFinite(n)&&n>=0?n:fallback}
+  catch{return fallback}
+}
+function save(key,value){try{localStorage.setItem(key,String(value))}catch{}}
+function renderStats(){$("xp").textContent=xp;$("best").textContent=best?best+" ms":"—"}
+function award(points){xp+=points;save("argameverse-xp",xp);renderStats()}
+renderStats();
+
+const games=[
+{id:"number",name:"Number Challenge",emoji:"🔢",cat:"Brain",desc:"Solve a random maths question.",play:()=>openGame("number")},
+{id:"memory",name:"Memory Challenge",emoji:"🧠",cat:"Brain",desc:"Match all eight pairs.",play:()=>openGame("memory")},
+{id:"reaction",name:"Reaction Test",emoji:"⚡",cat:"Reflex",desc:"Test your reaction speed.",play:()=>openGame("reaction")},
+{id:"poki",name:"Poki Games",emoji:"🌐",cat:"Arcade",desc:"Explore browser games on Poki.",play:()=>window.open("https://poki.com/","_blank","noopener")},
+{id:"crazy",name:"CrazyGames",emoji:"🕹️",cat:"Arcade",desc:"Discover games on CrazyGames.",play:()=>window.open("https://www.crazygames.com/","_blank","noopener")},
+{id:"racing",name:"Racing Zone",emoji:"🏎️",cat:"Racing",desc:"Racing games are planned.",soon:true},
+{id:"action",name:"Action Zone",emoji:"⚔️",cat:"Action",desc:"Action games are planned.",soon:true},
+{id:"puzzle",name:"Puzzle Zone",emoji:"🧩",cat:"Puzzle",desc:"More puzzles are planned.",soon:true}
+];
+
+function renderFilters(){
+  $("filters").replaceChildren();
+  categories.forEach(cat=>{
+    const b=document.createElement("button");
+    b.className="chip"+(activeCategory===cat?" active":"");
+    b.textContent=cat;
+    b.onclick=()=>{activeCategory=cat;renderFilters();renderGames()};
+    $("filters").appendChild(b);
+  });
 }
 function renderGames(){
-let term=$("search").value.toLowerCase(),cat=$("category").value;
-let items=gameList.filter(g=>(cat==="All"||g.cat===cat)&&(g.name+" "+g.desc+" "+g.cat).toLowerCase().includes(term));
-$("count").textContent=items.length+" games";
-$("games").innerHTML=items.map(g=>`<article class="card"><div class="art">${g.icon}</div><div class="tag">${g.cat} · ${g.theme||"GAME WORLD"}</div><h3>${g.name}</h3><p class="muted">${g.desc}</p><button class="${g.soon?"":"primary"}" onclick="launch('${g.id}')">${g.soon?"Coming Soon":g.url?"Visit Website ↗":"Play Now →"}</button></article>`).join("");
+  const query=$("search").value.trim().toLowerCase(),grid=$("gameGrid");
+  grid.replaceChildren();
+  const list=games.filter(g=>(activeCategory==="All"||g.cat===activeCategory)&&(g.name.toLowerCase().includes(query)||g.desc.toLowerCase().includes(query)));
+  if(!list.length){const p=document.createElement("p");p.className="muted";p.textContent="No games found. Try another search.";grid.appendChild(p);return}
+  list.forEach(g=>{
+    const card=document.createElement("article");card.className="card";
+    const emoji=document.createElement("div");emoji.className="emoji";emoji.textContent=g.emoji;
+    const title=document.createElement("h3");title.textContent=g.name;
+    const desc=document.createElement("p");desc.textContent=g.desc;
+    const btn=document.createElement("button");btn.className="btn"+(g.soon?"":" primary");
+    btn.textContent=g.soon?"Coming soon":"Play now";btn.disabled=!!g.soon;btn.onclick=g.play;
+    card.append(emoji,title,desc,btn);grid.appendChild(card);
+  });
 }
-function filterCategory(cat){$("category").value=cat;renderGames();$("library").scrollIntoView({behavior:"smooth"})}
-function goHome(){window.scrollTo({top:0,behavior:"smooth"})}
-function showProfile(){$("profile").scrollIntoView({behavior:"smooth"})}
-function openGame(id,title,info){
-clearTimeout(waitTimer);mode=id;round=0;locked=false;shown=false;started=0;
-$("play").classList.remove("hidden");$("gameTitle").textContent=title;$("gameInfo").textContent=info||"Earn XP by completing challenges.";
-$("gamePrompt").textContent="Ready?";$("gameControls").innerHTML="";$("feedback").textContent="";
-$("play").scrollIntoView({behavior:"smooth",block:"start"});
+$("search").addEventListener("input",renderGames);
+renderFilters();renderGames();
+
+function showArcade(){$("arcade").scrollIntoView({behavior:"smooth",block:"start"})}
+function stopTimer(){if(timer!==null)clearTimeout(timer);timer=null}
+function openGame(id){
+  stopTimer();currentGame=id;
+  $("gameScreen").classList.add("open");document.body.style.overflow="hidden";
+  startGame();
 }
-function closeGame(){clearTimeout(waitTimer);mode="";$("play").classList.add("hidden")}
-function award(points){xp+=points;played++;persist();refreshStats()}
-function launch(id){
-let g=gameList.find(x=>x.id===id);if(!g||g.soon)return;
-if(g.url){window.open(g.url,"_blank","noopener");return}
-if(id==="math")startMath();
-if(id==="memory")startMemory();
-if(id==="reaction")startReaction();
-if(id==="quiz")startQuiz();
+function closeGame(){
+  stopTimer();reactionState="idle";
+  $("gameScreen").classList.remove("open");document.body.style.overflow="";
+  currentGame="";
 }
-function startMath(){openGame("math","🧠 Number Challenge","Math Lab · 10 questions · +10 XP per correct answer");mathRound()}
-function mathRound(){
-round++;
-if(round>10){$("gamePrompt").textContent="🏆 Challenge Complete!";$("gameInfo").textContent="You finished all 10 rounds."; $("gameControls").innerHTML='<button class="primary" onclick="startMath()">Play Again</button>';return}
-let a,b,op=Math.random()<.7?"+":"−";
-if(op==="+"){a=Math.floor(Math.random()*(5+round*3))+1;b=Math.floor(Math.random()*(5+round*3))+1;answer=a+b}
-else{a=Math.floor(Math.random()*(5+round*3))+1;b=Math.floor(Math.random()*a)+1;answer=a-b}
-$("gameInfo").textContent="Round "+round+" / 10 · Difficulty increases as you progress";
-$("gamePrompt").textContent=a+" "+op+" "+b+" = ?";
-$("gameControls").innerHTML='<input id="answerInput" type="number" inputmode="numeric" placeholder="Your answer"><button class="primary" onclick="checkMath()">Submit</button>';
-$("answerInput").focus();
+function startGame(){
+  stopTimer();reactionState="idle";
+  $("gameControls").replaceChildren();
+  $("feedback").textContent="";$("roundLabel").textContent="";
+  $("restart").classList.remove("hidden");$("restart").textContent="Restart game";
+  if(currentGame==="number")startNumber();
+  if(currentGame==="memory")startMemory();
+  if(currentGame==="reaction")startReaction();
 }
-function checkMath(){
-if(locked)return;let v=$("answerInput").value;if(v===""){ $("feedback").textContent="Enter your answer first.";return}
-locked=true;
-if(Number(v)===answer){award(10);$("feedback").textContent="Correct! +10 XP ✨"}
-else $("feedback").textContent="Not quite. Answer: "+answer;
-waitTimer=setTimeout(()=>{locked=false;mathRound()},900)
+function setPrompt(text){$("gamePrompt").textContent=text}
+function setInfo(text){$("gameInfo").textContent=text}
+function setFeedback(text){$("feedback").textContent=text}
+function addButton(text,fn,primary=false){
+  const b=document.createElement("button");b.className="btn"+(primary?" primary":"");b.textContent=text;b.onclick=fn;$("gameControls").appendChild(b);return b;
 }
-function startMemory(){openGame("memory","🧩 Memory Challenge","Mind Maze · 6 rounds · sequence grows each round");round=0;memoryRound()}
-function memoryRound(){
-round++;if(round>6){$("gamePrompt").textContent="Memory Master! 🏆";$("gameInfo").textContent="You completed all six rounds.";award(20);$("gameControls").innerHTML='<button class="primary" onclick="startMemory()">Play Again</button>';return}
-sequence=Array.from({length:round+2},()=>Math.floor(Math.random()*9)+1);shown=true;
-$("gameInfo").textContent="Round "+round+" / 6 · Memorise the sequence";
-$("gamePrompt").textContent=sequence.join("  ·  ");
-$("gameControls").innerHTML="";
-waitTimer=setTimeout(()=>{shown=false;$("gamePrompt").textContent="Enter the sequence";$("gameControls").innerHTML='<input id="answerInput" inputmode="numeric" placeholder="Example: 12345"><button class="primary" onclick="checkMemory()">Check</button>';},1500+round*400)
+function addInput(placeholder){
+  const input=document.createElement("input");input.className="gameInput";input.placeholder=placeholder;input.setAttribute("aria-label",placeholder);input.autocomplete="off";$("gameControls").appendChild(input);return input;
 }
-function checkMemory(){
-let v=$("answerInput").value.replace(/\s/g,"");
-if(v===sequence.join("")){award(15);$("feedback").textContent="Perfect memory! +15 XP"}
-else $("feedback").textContent="The sequence was "+sequence.join("");
-waitTimer=setTimeout(memoryRound,1100)
+
+/* Number Challenge */
+function startNumber(){
+  $("gameTitle").textContent="🔢 NUMBER CHALLENGE";
+  const a=1+Math.floor(Math.random()*20),b=1+Math.floor(Math.random()*20);
+  const add=Math.random()<0.5;
+  targetNumber=add?a+b:a-b;
+  setInfo("Enter your answer, then press Submit.");
+  setPrompt(a+(add?" + ":" − ")+b+" = ?");
+  const input=addInput("Your answer");input.type="number";input.inputMode="numeric";
+  const submit=addButton("Submit",()=>{
+    if(submit.disabled)return;
+    if(input.value.trim()===""){setFeedback("Enter an answer first.");return}
+    submit.disabled=true;input.disabled=true;
+    if(Number(input.value)===targetNumber){setFeedback("Correct! +10 XP 🎉");award(10)}
+    else setFeedback("The correct answer is "+targetNumber+". Try another round!");
+    $("restart").textContent="Play again";
+  },true);
+  input.addEventListener("keydown",e=>{if(e.key==="Enter")submit.click()});
+  input.focus();
 }
-function startReaction(){openGame("reaction","⚡ Reaction Test","Neon Arena · test your reaction time");reactionWait()}
-function reactionWait(){
-clearTimeout(waitTimer);started=0;locked=false;
-$("gamePrompt").textContent="🔴 WAIT FOR GREEN";$("gameControls").innerHTML="";
-$("gameInfo").textContent="Tap only when the signal turns green.";
-waitTimer=setTimeout(()=>{started=Date.now();$("gamePrompt").textContent="🟢 TAP NOW!";$("gameControls").innerHTML='<button class="primary bigbutton" onclick="reactionTap()">TAP!</button>'},1500+Math.random()*3000)
+
+/* Memory Challenge */
+function startMemory(){
+  $("gameTitle").textContent="🧠 MEMORY CHALLENGE";
+  setInfo("Tap two cards to reveal them. Match every pair.");
+  setPrompt("Find all 8 pairs!");
+  const symbols=["🚀","🎮","🐺","⚡","👾","💎","🔥","🌙"];
+  memoryDeck=[...symbols,...symbols];
+  for(let i=memoryDeck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[memoryDeck[i],memoryDeck[j]]=[memoryDeck[j],memoryDeck[i]]}
+  flipped=[];matched=[];lockBoard=false;
+  const board=document.createElement("div");board.className="memoryGrid";
+  memoryDeck.forEach((symbol,index)=>{
+    const b=document.createElement("button");b.className="memoryTile";b.textContent="❔";b.setAttribute("aria-label","Hidden card");
+    b.onclick=()=>flipCard(index,b);board.appendChild(b);
+  });
+  $("gameControls").appendChild(board);$("roundLabel").textContent="0 / 8 pairs";
 }
-function reactionTap(){
-if(!started){clearTimeout(waitTimer);$("feedback").textContent="Too early! Try again."; $("gameControls").innerHTML='<button onclick="reactionWait()">Try Again</button>';return}
-let ms=Date.now()-started;started=0;
-$("gamePrompt").textContent=ms+" ms";
-if(ms<250){award(20);$("feedback").textContent="Lightning fast! +20 XP"}
-else if(ms<400){award(10);$("feedback").textContent="Nice reaction! +10 XP"}
-else $("feedback").textContent="Try again to beat your time!";
-$("gameControls").innerHTML='<button class="primary" onclick="reactionWait()">Play Again</button>'
+function flipCard(index,button){
+  if(lockBoard||matched.includes(index)||flipped.some(x=>x.index===index))return;
+  button.textContent=memoryDeck[index];button.setAttribute("aria-label",memoryDeck[index]);
+  flipped.push({index,button});
+  if(flipped.length!==2)return;
+  const [a,b]=flipped;
+  if(memoryDeck[a.index]===memoryDeck[b.index]){
+    matched.push(a.index,b.index);a.button.disabled=true;b.button.disabled=true;flipped=[];
+    $("roundLabel").textContent=(matched.length/2)+" / 8 pairs";
+    if(matched.length===memoryDeck.length){setPrompt("You did it! 🎉");setFeedback("All pairs matched! +20 XP");award(20);$("restart").textContent="Play again"}
+  }else{
+    lockBoard=true;
+    timer=setTimeout(()=>{
+      a.button.textContent="❔";b.button.textContent="❔";
+      a.button.setAttribute("aria-label","Hidden card");b.button.setAttribute("aria-label","Hidden card");
+      flipped=[];lockBoard=false;timer=null;
+    },700);
+  }
 }
-const questions=[
-{q:"Which planet is known as the Red Planet?",a:["Venus","Mars","Mercury"],c:1},
-{q:"What is 8 × 7?",a:["54","56","64"],c:1},
-{q:"Choose the correct spelling.",a:["Beautiful","Beutiful","Beautifull"],c:0},
-{q:"Which gas do plants absorb for photosynthesis?",a:["Oxygen","Carbon dioxide","Helium"],c:1},
-{q:"What is 100 ÷ 4?",a:["20","25","40"],c:1},
-{q:"Which organ pumps blood around the human body?",a:["Lungs","Brain","Heart"],c:2},
-{q:"What is the opposite of 'ancient'?",a:["Modern","Historic","Old"],c:0},
-{q:"How many sides does a hexagon have?",a:["Five","Six","Eight"],c:1}
-];
-function startQuiz(){openGame("quiz","📚 Learning Zone","Knowledge Core · 8 mixed questions");round=0;quizRound()}
-function quizRound(){
-if(round>=questions.length){$("gamePrompt").textContent="🎓 Learning Complete!";$("gameInfo").textContent="You finished the quiz.";award(10);$("gameControls").innerHTML='<button class="primary" onclick="startQuiz()">Play Again</button>';return}
-let q=questions[round];$("gameInfo").textContent="Question "+(round+1)+" / "+questions.length;
-$("gamePrompt").textContent=q.q;
-$("gameControls").innerHTML=q.a.map((a,i)=>`<button style="width:100%;max-width:340px" onclick="answerQuiz(${i})">${a}</button>`).join("");
+
+/* Reaction Test: idle -> waiting -> go -> finished */
+function startReaction(){
+  $("gameTitle").textContent="⚡ REACTION TEST";
+  setInfo("Press Start. Wait for green, then tap as quickly as possible.");
+  setPrompt("Ready?");
+  const b=addButton("Start test",beginReaction,true);
+  function beginReaction(){
+    stopTimer();reactionState="waiting";b.disabled=true;
+    b.textContent="Wait for green...";b.style.background="#24263b";b.style.borderColor="#454b70";
+    setPrompt("Wait...");setFeedback("Don't tap until the signal turns green.");
+    timer=setTimeout(()=>{
+      timer=null;
+      if(currentGame!=="reaction"||!$("gameScreen").classList.contains("open"))return;
+      reactionState="go";reactionStarted=performance.now();
+      b.disabled=false;b.textContent="TAP NOW!";b.style.background="#087d43";b.style.borderColor="#53ff9c";
+      setPrompt("GO!");setFeedback("");
+    },1200+Math.random()*2500);
+  }
+  b.onclick=()=>{
+    if(reactionState==="waiting"){
+      stopTimer();reactionState="finished";b.disabled=true;b.style.background="";b.style.borderColor="";
+      setPrompt("Too early!");setFeedback("Wait for green next time.");
+      $("restart").textContent="Try again";return;
+    }
+    if(reactionState==="go"){
+      const elapsed=Math.round(performance.now()-reactionStarted);
+      reactionState="finished";b.disabled=true;b.style.background="";b.style.borderColor="";
+      setPrompt(elapsed+" ms");setFeedback("Reaction recorded! +5 XP");
+      award(5);
+      if(!best||elapsed<best){best=elapsed;save("argameverse-best",best);renderStats();setFeedback("New personal best! 🏆 +5 XP")}
+      $("roundLabel").textContent="+5 XP";$("restart").textContent="Try again";
+    }
+  };
 }
-function answerQuiz(i){
-if(locked)return;locked=true;
-if(i===questions[round].c){award(10);$("feedback").textContent="Correct! +10 XP"}
-else $("feedback").textContent="Good try! Keep learning.";
-round++;waitTimer=setTimeout(()=>{locked=false;quizRound()},850)
-}
-function resetProgress(){
-if(!confirm("Reset all saved XP and progress on this browser?"))return;
-xp=0;played=0;persist();refreshStats()
-}
-renderGames();refreshStats();$("play").classList.add("hidden");
 </script>
 </body>
-</html>                                                                                                                    </html>
+ </html>
  
