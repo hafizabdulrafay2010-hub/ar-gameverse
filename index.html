@@ -14,7 +14,15 @@ button,input{font:inherit}
 button{cursor:pointer}
 button:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 header{text-align:center;padding:25px 12px;border-bottom:1px solid var(--line);background:#090a17}
-.logo{font-size:clamp(28px,7vw,44px);font-weight:900}
+.logo-img {
+  width: 180px;
+  max-width: 70%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 12px #35f2ff66);
+}
 .logo span{color:var(--cyan);text-shadow:0 0 18px #35f2ff66}
 .tag{color:var(--muted);font-size:12px;margin-top:8px}
 .stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:15px}
@@ -61,14 +69,16 @@ footer{text-align:center;padding:25px 12px;color:var(--muted);font-size:12px}
 </head>
 <body>
 <header>
-  <div class="logo">AR <span>GAMEVERSE</span></div>
+  
   <div class="tag">YOUR PORTAL. YOUR PLAYGROUND. YOUR NEXT HIGH SCORE.</div>
   <div class="stats">
     <div class="stat">⭐ XP: <strong id="xp">0</strong></div>
     <div class="stat">🏆 Best reaction: <strong id="best">—</strong></div>
   </div>
 </header>
-
+<div class="logo">
+  <img src="ar-gameverse-logo.png" alt="AR GAMEVERSE Logo" class="logo-img">
+</div>
 <main>
   <section class="hero">
     <div class="eyebrow">WELCOME TO THE GAMEVERSE</div>
